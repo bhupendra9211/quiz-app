@@ -18,6 +18,7 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
     <% if flash[:notice] %>
       <p style="color: green;"><%= flash[:notice] %></p>
     <% end %>
