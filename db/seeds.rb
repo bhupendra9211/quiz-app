@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+admin = User.create!(email: 'admin@example.com', password: 'password', role: 'admin')
+user = User.create!(email: 'user@example.com', password: 'password', role: 'user')
+
+category = Category.create!(name: 'Aptitude')
+question = category.questions.create!(content: 'What is 2 + 2?', correct_option: 2)
+question.options.create!([
+  { content: '3' },
+  { content: '4' },
+  { content: '5' },
+  { content: '6' }
+])

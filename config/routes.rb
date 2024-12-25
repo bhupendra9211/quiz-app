@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  root 'categories#index'
+
+  namespace :admin do
+    resources :categories do
+      resources :questions, shallow: true
+    end
+  end
+
+  resources :categories, only: [:index, :show] do
+    resources :questions, only: [:show] do
+      post :submit_answer, on: :member
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
