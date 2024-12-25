@@ -18,3 +18,17 @@ question.options.create!([
   { content: '5' },
   { content: '6' }
 ])
+question = category.questions.create!(content: 'What is 1 + 2?', correct_option: 1)
+question.options.create!([
+  { content: '3' },
+  { content: '4' },
+  { content: '5' },
+  { content: '6' }
+])
+question = category.questions.create!(content: 'What is 22 + 2?', correct_option: 3)
+question.options.create!([
+  { content: '32' },
+  { content: '41' },
+  { content: '24' },
+  { content: '6' }
+])
