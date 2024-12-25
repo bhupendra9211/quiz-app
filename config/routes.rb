@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get "home/index"
   devise_for :users
 
   root 'home#index'
-
+  # root 'categories#index'
   # namespace :admin do
   #   resources :categories do
   #     resources :questions, shallow: true

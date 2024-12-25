@@ -1,0 +1,12 @@
+<div class="max-w-4xl mx-auto px-4 py-2">
+  <% if flash[:notice] %>
+    <p class="bg-green-100 text-green-700 p-3 rounded-lg my-4 shadow-lg">
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="bg-red-100 text-red-700 p-3 rounded-lg my-4 shadow-lg">
+      <%= flash[:alert] %>
+    </p>
+  <% end %>
+</div>
