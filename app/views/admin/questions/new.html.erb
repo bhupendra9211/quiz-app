@@ -1,0 +1,22 @@
+<h1 class="text-2xl font-bold mb-4">Add Question to <%= @category.name %></h1>
+<%= form_with model: @question, url: admin_category_questions_path(@category), class: 'space-y-4' do |form| %>
+  <div>
+    <%= form.label :content, 'Question', class: 'block font-medium' %>
+    <%= form.text_area :content, class: 'w-full border rounded p-2' %>
+  </div>
+
+  <h3 class="font-medium">Options</h3>
+  <%= form.fields_for :options do |option_form| %>
+    <div class="flex items-center space-x-2">
+      <%= option_form.label :content, "Option:", class: 'block' %>
+      <%= option_form.text_field :content, class: 'border rounded p-2' %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :correct_option, 'Correct Option (1-4)', class: 'block font-medium' %>
+    <%= form.number_field :correct_option, class: 'w-full border rounded p-2' %>
+  </div>
+
+  <%= form.submit 'Create Question', class: 'bg-blue-500 text-white px-4 py-2 rounded' %>
+<% end %>

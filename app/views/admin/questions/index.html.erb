@@ -1,0 +1,10 @@
+<h1 class="text-2xl font-bold mb-4">Questions for <%= @category.name %></h1>
+<%= link_to 'Add New Question', new_admin_category_question_path(@category), class: 'bg-blue-500 text-white px-4 py-2 rounded' %>
+<ul class="mt-4 space-y-2">
+  <% @questions.each do |question| %>
+    <li class="border p-4 rounded">
+      <p><%= question.content %></p>
+      <p class="text-sm text-gray-600">Correct Option: <%= question.correct_option %></p>
+    </li>
+  <% end %>
+</ul>

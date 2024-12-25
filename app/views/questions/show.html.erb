@@ -1,0 +1,23 @@
+<h1 class="text-2xl font-bold mb-4">Question</h1>
+<p class="text-lg"><%= @question.content %></p>
+
+<h3 class="font-medium mt-4">Options</h3>
+<%= form_with url: submit_answer_category_question_path(@question.category, @question), method: :post, class: 'space-y-2' do |form| %>
+  <% @question.options.each_with_index do |option, index| %>
+    <div>
+      <%= form.radio_button :option, index + 1, class: 'mr-2' %>
+      <%= form.label :option, option.content, class: 'cursor-pointer' %>
+    </div>
+  <% end %>
+  <%= form.submit 'Submit Answer', class: 'bg-green-500 text-white px-4 py-2 rounded mt-4' %>
+<% end %>
+
+<% if defined?(@correct) %>
+  <div class="mt-4">
+    <% if @correct %>
+      <p class="text-green-500 font-bold">Correct!</p>
+    <% else %>
+      <p class="text-red-500 font-bold">Incorrect. The correct answer is: <%= @correct_answer %>.</p>
+    <% end %>
+  </div>
+<% end %>

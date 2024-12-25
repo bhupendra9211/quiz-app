@@ -3,15 +3,25 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
+  # namespace :admin do
+  #   resources :categories do
+  #     resources :questions, shallow: true
+  #   end
+  # end
   namespace :admin do
     resources :categories do
-      resources :questions, shallow: true
+      resources :questions, only: [:index, :new, :create]
     end
   end
 
+  # resources :categories, only: [:index, :show] do
+  #   resources :questions, only: [:show] do
+  #     post :submit_answer, on: :member
+  #   end
+  # end
   resources :categories, only: [:index, :show] do
     resources :questions, only: [:show] do
-      post :submit_answer, on: :member
+      post 'submit_answer', on: :member
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
