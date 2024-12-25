@@ -1,0 +1,22 @@
+<h1 class="text-2xl font-bold mb-4">Results for <%= @category.name %></h1>
+
+<p class="text-lg">Correct Answers: <%= @correct_count %></p>
+<p class="text-lg">Wrong Answers: <%= @wrong_count %></p>
+
+<ul class="space-y-4 mt-4">
+  <% @results.each do |result| %>
+    <li class="p-4 border rounded">
+      <p class="font-medium"><%= result[:question].content %></p>
+
+      <% if result[:correct] %>
+        <p class="text-green-500">Correct!</p>
+      <% else %>
+        <p class="text-red-500">Incorrect. The correct answer is: 
+          <%= result[:question].options[result[:question].correct_option - 1].content %>
+        </p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Categories', categories_path, class: 'bg-blue-500 text-white px-4 py-2 rounded mt-4' %>

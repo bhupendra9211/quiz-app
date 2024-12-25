@@ -1,0 +1,17 @@
+<h1 class="text-2xl font-bold mb-4"><%= @category.name %> Questions</h1>
+
+<%= form_with url: submit_answers_category_path(@category), method: :post do |form| %>
+  <% @questions.each do |question| %>
+    <div class="mb-6">
+      <h3 class="font-medium text-lg"><%= question.content %></h3>
+      <% question.options.each_with_index do |option, index| %>
+        <div>
+          <%= form.radio_button "answers[#{question.id}]", index + 1, id: "question_#{question.id}_option_#{index + 1}" %>
+          <%= form.label "answers[#{question.id}]", option.content, for: "question_#{question.id}_option_#{index + 1}" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Submit Answers', class: 'bg-green-500 text-white px-4 py-2 rounded' %>
+<% end %>

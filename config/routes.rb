@@ -20,10 +20,11 @@ Rails.application.routes.draw do
   #   end
   # end
   resources :categories, only: [:index, :show] do
-    resources :questions, only: [:show] do
-      post 'submit_answer', on: :member
-    end
+    post :submit_answers, on: :member
   end
+  
+  
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
